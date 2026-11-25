@@ -1,0 +1,53 @@
+{
+  "Software Engineer": [
+    "python",
+    "java",
+    "c++",
+    "sql",
+    "git",
+    "algorithms",
+    "data structures",
+    "api",
+    "backend"
+  ],
+  "Machine Learning Engineer": [
+    "python",
+    "machine learning",
+    "deep learning",
+    "numpy",
+    "pandas",
+    "tensorflow",
+    "pytorch",
+    "nlp",
+    "scikit-learn"
+  ],
+  "Data Scientist": [
+    "python",
+    "sql",
+    "pandas",
+    "numpy",
+    "machine learning",
+    "statistics",
+    "visualization",
+    "data science"
+  ],
+  "Frontend Developer": [
+    "react",
+    "javascript",
+    "typescript",
+    "html",
+    "css",
+    "ui",
+    "tailwind"
+  ],
+  "Backend Developer": [
+    "python",
+    "django",
+    "flask",
+    "sql",
+    "api",
+    "fastapi",
+    "rest"
+  ]
+}
+

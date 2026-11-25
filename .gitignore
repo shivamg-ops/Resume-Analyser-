@@ -1,0 +1,34 @@
+# Environment & Dependencies
+venv/
+*/venv/
+env/
+*/env/
+node_modules/
+*/node_modules/
+dist/
+*/dist/
+
+# Python cache & artifacts
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+*.pkl
+*.joblib
+
+# Environment variables
+.env
+.env.local
+*.env
+
+# SQLite & databases
+*.sqlite3
+db.sqlite3
+
+# Uploads & temporary data
+career-recommender/backend/data/
+career-recommender/data/resumes/
+
+# OS specific
+.DS_Store
+Thumbs.db

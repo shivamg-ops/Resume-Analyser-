@@ -1,0 +1,15 @@
+[
+  {
+    "job_title": "Full Stack Developer",
+    "required_skills": ["python", "django", "react", "javascript", "sql", "api", "html", "css"]
+  },
+  {
+    "job_title": "AI Research Engineer",
+    "required_skills": ["python", "pytorch", "deep learning", "machine learning", "nlp", "transformers", "numpy"]
+  },
+  {
+    "job_title": "Data Analyst",
+    "required_skills": ["sql", "python", "pandas", "numpy", "excel", "visualization"]
+  }
+]
+
