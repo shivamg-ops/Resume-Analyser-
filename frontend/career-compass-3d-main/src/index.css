@@ -7,63 +7,55 @@
 
 @layer base {
   :root {
-    /* Exact Palette from Design System:
-       Background: #0B151B (203, 42%, 7%)
-       Card Background: #14232B (203, 36%, 13%)
-       Primary (Cyan): #22C1C3 (181, 70%, 45%)
-       Secondary (Teal): #0D9488 (175, 84%, 32%)
-       Border: #263B43 (197, 27%, 21%)
-       Main Text: #F1F5F9 (210, 40%, 96%)
-       Secondary Text: #94A3B8 (215, 16%, 65%)
+    /* Upgraded Vibrant Neon-Teal & Obsidian SaaS Palette:
+       Deep Canvas: #070D12 (Richer, deeper midnight navy)
+       Card Background: #0F1D24 (Deep lustrous cyan-tinted slate)
+       Card Surface Light: #162832
+       Primary (Electric Cyan): #00F2FE / #22D3EE (Pure high-luminance neon)
+       Secondary (Teal-Emerald): #0EA5E9 / #0D9488
+       Border: #1E3844 (Crisp contrast border)
+       Main Text: #FFFFFF (Crisp stark white)
+       Secondary Text: #94A3B8 (Soft readable silver slate)
     */
 
-    --background: 203 42% 7%;
-    --foreground: 210 40% 96%;
+    --background: 206 45% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 203 36% 13%;
-    --card-foreground: 210 40% 96%;
+    --card: 203 40% 10%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 203 36% 13%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 203 40% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 181 70% 45%;
-    --primary-foreground: 203 42% 7%;
+    --primary: 187 96% 53%;
+    --primary-foreground: 206 45% 5%;
 
-    --secondary: 175 84% 32%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 175 84% 36%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 203 28% 18%;
-    --muted-foreground: 215 16% 65%;
+    --muted: 203 35% 15%;
+    --muted-foreground: 215 20% 70%;
 
-    --accent: 181 70% 45%;
-    --accent-foreground: 203 42% 7%;
+    --accent: 187 96% 53%;
+    --accent-foreground: 206 45% 5%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 90% 64%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 152 76% 40%;
+    --success: 154 75% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 38 96% 54%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 197 27% 21%;
-    --input: 197 27% 18%;
-    --ring: 181 70% 45%;
+    --border: 198 38% 20%;
+    --input: 198 38% 16%;
+    --ring: 187 96% 53%;
 
     --radius: 0.875rem;
 
-    /* Custom tokens */
-    --color-bg-base: #0B151B;
-    --color-card-base: #14232B;
-    --color-primary-base: #22C1C3;
-    --color-secondary-base: #0D9488;
-    --color-border-base: #263B43;
-    --color-text-main: #F1F5F9;
-    --color-text-muted: #94A3B8;
-
-    --glow-cyan: 181 70% 45%;
-    --glow-teal: 175 84% 32%;
+    --glow-cyan: 187 96% 53%;
+    --glow-teal: 175 84% 36%;
   }
 }
 
@@ -73,99 +65,124 @@
   }
 
   body {
-    @apply bg-[#0B151B] text-[#F1F5F9] font-sans antialiased;
+    @apply bg-[#070D12] text-[#FFFFFF] font-sans antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #0B151B;
+    background-color: #070D12;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(34, 193, 195, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.08) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(11, 21, 27, 1) 0px, transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 242, 254, 0.15), transparent 70%),
+      radial-gradient(circle 600px at 0% 20%, rgba(13, 148, 136, 0.12), transparent 60%),
+      radial-gradient(circle 500px at 100% 60%, rgba(0, 242, 254, 0.08), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(7, 13, 18, 1), transparent);
     background-attachment: fixed;
     min-height: 100vh;
   }
 }
 
 @layer components {
-  /* Premium Glass Cards */
+  /* Ultra-Premium Glass Cards */
   .saas-card {
-    @apply relative overflow-hidden rounded-xl border border-[#263B43] bg-[#14232B]/85 backdrop-blur-xl;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    @apply relative overflow-hidden rounded-2xl border border-[#1E3844] bg-[#0F1D24]/90 backdrop-blur-2xl;
+    box-shadow: 
+      0 12px 36px -10px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 20px 0 rgba(0, 242, 254, 0.02);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .saas-card:hover {
-    border-color: rgba(34, 193, 195, 0.4);
-    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 193, 195, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 242, 254, 0.5);
+    background: linear-gradient(145deg, rgba(15, 29, 36, 0.95), rgba(22, 40, 50, 0.9));
+    box-shadow: 
+      0 20px 45px -10px rgba(0, 0, 0, 0.8),
+      0 0 25px rgba(0, 242, 254, 0.18),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
   }
 
   .saas-card-static {
-    @apply relative overflow-hidden rounded-xl border border-[#263B43] bg-[#14232B]/85 backdrop-blur-xl;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    @apply relative overflow-hidden rounded-2xl border border-[#1E3844] bg-[#0F1D24]/90 backdrop-blur-2xl;
+    box-shadow: 
+      0 12px 36px -10px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
   }
 
-  /* Glowing accents */
+  /* Vibrant Glowing Buttons */
   .glow-cyan-btn {
-    background: linear-gradient(135deg, #22C1C3 0%, #0D9488 100%);
-    box-shadow: 0 0 20px rgba(34, 193, 195, 0.35);
-    transition: all 0.25s ease;
+    background: linear-gradient(135deg, #00F2FE 0%, #0EA5E9 50%, #0D9488 100%);
+    box-shadow: 0 0 24px rgba(0, 242, 254, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    color: #070D12 !important;
+    font-weight: 700;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .glow-cyan-btn:hover {
-    box-shadow: 0 0 28px rgba(34, 193, 195, 0.6);
-    transform: translateY(-1px);
+    box-shadow: 0 0 35px rgba(0, 242, 254, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(-1.5px) scale(1.02);
+  }
+
+  .glow-cyan-btn:active {
+    transform: translateY(0px) scale(0.99);
   }
 
   .text-glow {
-    text-shadow: 0 0 24px rgba(34, 193, 195, 0.4);
+    text-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
   }
 
-  /* Custom badge */
+  /* Skill Badges with High Contrast */
   .badge-skill {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all;
-    background: rgba(34, 193, 195, 0.12);
-    border: 1px solid rgba(34, 193, 195, 0.3);
-    color: #22C1C3;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all;
+    background: rgba(0, 242, 254, 0.12);
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    color: #00F2FE;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
   }
 
   .badge-skill:hover {
-    background: rgba(34, 193, 195, 0.2);
-    box-shadow: 0 0 12px rgba(34, 193, 195, 0.25);
+    background: rgba(0, 242, 254, 0.22);
+    border-color: #00F2FE;
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
+    transform: translateY(-1px);
   }
 
   .badge-missing {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all;
-    background: rgba(239, 68, 68, 0.12);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #F87171;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all;
+    background: rgba(244, 63, 94, 0.12);
+    border: 1px solid rgba(244, 63, 94, 0.4);
+    color: #FB7185;
   }
 
-  /* Custom Scrollbar */
+  .badge-missing:hover {
+    background: rgba(244, 63, 94, 0.22);
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.3);
+  }
+
+  /* Subtle Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0B151B;
+    background: #070D12;
   }
   ::-webkit-scrollbar-thumb {
-    background: #263B43;
+    background: #1E3844;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #22C1C3;
+    background: #00F2FE;
   }
 }
 
 @layer utilities {
   .bg-gradient-saas {
-    background: linear-gradient(135deg, #22C1C3 0%, #0D9488 100%);
+    background: linear-gradient(135deg, #00F2FE 0%, #0EA5E9 50%, #0D9488 100%);
   }
 
   .text-gradient-cyan {
-    background: linear-gradient(135deg, #22C1C3 0%, #5EEAD4 50%, #0D9488 100%);
+    background: linear-gradient(135deg, #00F2FE 0%, #38BDF8 40%, #2DD4BF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.35));
   }
 }

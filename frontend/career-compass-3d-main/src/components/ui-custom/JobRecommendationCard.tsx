@@ -18,40 +18,40 @@ export const JobRecommendationCard: React.FC<JobRecommendationCardProps> = ({
 
   return (
     <div
-      className={`saas-card p-6 flex flex-col justify-between ${
-        isTopMatch ? "border-[#22C1C3]/50 ring-1 ring-[#22C1C3]/30" : ""
+      className={`saas-card p-6 flex flex-col justify-between hover:border-[#00F2FE]/40 transition-all duration-300 ${
+        isTopMatch ? "border-[#00F2FE]/60 ring-1 ring-[#00F2FE]/40 shadow-[0_0_24px_rgba(0,242,254,0.12)]" : ""
       }`}
     >
       <div>
         {/* Top Badges */}
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#22C1C3]/10 border border-[#22C1C3]/30 flex items-center justify-center text-[#22C1C3]">
+            <div className="w-10 h-10 rounded-xl bg-[#00F2FE]/10 border border-[#00F2FE]/30 flex items-center justify-center text-[#00F2FE] shadow-[0_0_12px_rgba(0,242,254,0.2)]">
               <Briefcase className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-bold text-[#F1F5F9] text-base">{job.job}</h4>
+              <h4 className="font-bold text-[#F8FAFC] text-base">{job.job}</h4>
               <span className="text-xs text-[#94A3B8]">Full-time • Tech Roles</span>
             </div>
           </div>
 
           {isTopMatch && (
-            <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#22C1C3]/15 text-[#22C1C3] border border-[#22C1C3]/30">
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#00F2FE]/15 text-[#00F2FE] border border-[#00F2FE]/40 shadow-[0_0_10px_rgba(0,242,254,0.2)]">
               Best Match
             </span>
           )}
         </div>
 
         {/* Dual Scores */}
-        <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-[#0B151B]/60 border border-[#263B43] mb-4">
+        <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-[#070D12]/80 border border-[#1E3A47] mb-4">
           <div>
             <div className="flex items-center justify-between text-xs mb-1">
               <span className="text-[#94A3B8]">Semantic Match</span>
-              <span className="font-bold text-[#22C1C3]">{semanticPct}%</span>
+              <span className="font-bold text-[#00F2FE]">{semanticPct}%</span>
             </div>
-            <div className="w-full bg-[#263B43]/60 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-[#1E3A47]/60 h-1.5 rounded-full overflow-hidden">
               <div
-                className="bg-[#22C1C3] h-full rounded-full transition-all duration-700"
+                className="bg-gradient-to-r from-[#0D9488] to-[#00F2FE] h-full rounded-full transition-all duration-700 shadow-[0_0_8px_rgba(0,242,254,0.5)]"
                 style={{ width: `${Math.max(5, semanticPct)}%` }}
               />
             </div>
@@ -62,9 +62,9 @@ export const JobRecommendationCard: React.FC<JobRecommendationCardProps> = ({
               <span className="text-[#94A3B8]">ATS Match</span>
               <span className="font-bold text-emerald-400">{atsPct}%</span>
             </div>
-            <div className="w-full bg-[#263B43]/60 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-[#1E3A47]/60 h-1.5 rounded-full overflow-hidden">
               <div
-                className="bg-emerald-400 h-full rounded-full transition-all duration-700"
+                className="bg-emerald-400 h-full rounded-full transition-all duration-700 shadow-[0_0_8px_rgba(52,211,153,0.4)]"
                 style={{ width: `${Math.max(5, atsPct)}%` }}
               />
             </div>

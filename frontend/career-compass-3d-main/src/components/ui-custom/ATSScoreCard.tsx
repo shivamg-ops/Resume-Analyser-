@@ -16,14 +16,14 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
   const normalizedScore = Math.min(100, Math.max(0, Math.round(score)));
 
   // SVG Gauge calculations
-  const radius = size === "lg" ? 80 : size === "md" ? 60 : 45;
-  const strokeWidth = size === "lg" ? 12 : size === "md" ? 9 : 7;
+  const radius = size === "lg" ? 82 : size === "md" ? 60 : 45;
+  const strokeWidth = size === "lg" ? 14 : size === "md" ? 10 : 8;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (normalizedScore / 100) * circumference;
 
-  let colorHex = "#22C1C3";
-  let tierLabel = "Optimal Match";
-  let tierDescription = "High likelihood of passing automated ATS screening filters.";
+  let colorHex = "#00F2FE";
+  let tierLabel = "Optimal ATS Fit";
+  let tierDescription = "High likelihood of passing automated ATS screening algorithms.";
 
   if (normalizedScore < 50) {
     colorHex = "#F43F5E";
@@ -32,11 +32,11 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
   } else if (normalizedScore < 75) {
     colorHex = "#F59E0B";
     tierLabel = "Moderate Match";
-    tierDescription = "Good fundamentals with a few missing technical skills.";
+    tierDescription = "Good baseline skills with several missing high-impact keywords.";
   }
 
   return (
-    <div className="saas-card p-6 flex flex-col md:flex-row items-center gap-6">
+    <div className="saas-card p-7 flex flex-col md:flex-row items-center gap-7 border-[#1E3844]">
       {/* Radial Gauge */}
       <div className="relative flex items-center justify-center shrink-0">
         <svg
@@ -49,7 +49,7 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
             cx={radius + strokeWidth}
             cy={radius + strokeWidth}
             r={radius}
-            stroke="#263B43"
+            stroke="#1E3844"
             strokeWidth={strokeWidth}
             fill="transparent"
           />
@@ -65,16 +65,16 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
             strokeLinecap="round"
             fill="transparent"
             className="transition-all duration-1000 ease-out"
-            style={{ filter: `drop-shadow(0 0 10px ${colorHex}55)` }}
+            style={{ filter: `drop-shadow(0 0 16px ${colorHex}88)` }}
           />
         </svg>
 
         {/* Center score readout */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-3xl md:text-4xl font-extrabold text-[#F1F5F9] font-display">
+          <span className="text-4xl md:text-5xl font-black text-[#FFFFFF] font-display tracking-tight">
             {normalizedScore}%
           </span>
-          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#94A3B8]">
+          <span className="text-[10px] uppercase tracking-widest font-bold text-[#94A3B8]">
             ATS Score
           </span>
         </div>
@@ -82,37 +82,42 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
 
       {/* Info details */}
       <div className="flex-1 text-center md:text-left">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold mb-2"
-          style={{ backgroundColor: `${colorHex}15`, color: colorHex, border: `1px solid ${colorHex}33` }}
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-3 shadow-sm"
+          style={{
+            backgroundColor: `${colorHex}18`,
+            color: colorHex,
+            border: `1px solid ${colorHex}44`,
+            boxShadow: `0 0 12px ${colorHex}22`
+          }}
         >
-          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: colorHex }} />
+          <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: colorHex }} />
           {tierLabel}
         </div>
 
-        <h3 className="text-xl font-bold text-[#F1F5F9] mb-1">
+        <h3 className="text-2xl font-bold text-[#FFFFFF] mb-1.5 font-display">
           {role || "Target Role"}
         </h3>
-        <p className="text-sm text-[#94A3B8] leading-relaxed mb-4">
+        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-5">
           {tierDescription}
         </p>
 
         {/* Breakdown bars */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-[#263B43]">
-          <div>
-            <span className="text-[11px] text-[#94A3B8] block">Keyword Match</span>
-            <span className="text-sm font-semibold text-[#F1F5F9]">{Math.min(100, normalizedScore + 5)}%</span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-[#1E3844]">
+          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Keyword Match</span>
+            <span className="text-sm font-bold text-[#FFFFFF]">{Math.min(100, normalizedScore + 5)}%</span>
           </div>
-          <div>
-            <span className="text-[11px] text-[#94A3B8] block">Semantic Fit</span>
-            <span className="text-sm font-semibold text-[#22C1C3]">{normalizedScore}%</span>
+          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Semantic Fit</span>
+            <span className="text-sm font-bold text-[#00F2FE]">{normalizedScore}%</span>
           </div>
-          <div>
-            <span className="text-[11px] text-[#94A3B8] block">Format Integrity</span>
-            <span className="text-sm font-semibold text-emerald-400">98%</span>
+          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Format Integrity</span>
+            <span className="text-sm font-bold text-emerald-400">98%</span>
           </div>
         </div>
       </div>
     </div>
   );
 };
-

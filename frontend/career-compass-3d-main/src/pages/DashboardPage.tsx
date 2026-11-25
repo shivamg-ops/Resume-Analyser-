@@ -38,32 +38,32 @@ export const DashboardPage: React.FC = () => {
       subtitle="Overview of your resume performance, skill footprint, and job alignment."
     >
       {/* Welcome Banner */}
-      <div className="saas-card p-6 md:p-8 mb-8 bg-gradient-to-r from-[#14232B] via-[#14232B] to-[#0D9488]/20 border-[#263B43]">
+      <div className="saas-card p-6 md:p-8 mb-8 bg-gradient-to-r from-[#0F1D24] via-[#0F1D24] to-[#0D9488]/20 border-[#1E3A47] shadow-[0_0_30px_rgba(0,242,254,0.06)]">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#22C1C3]/10 text-[#22C1C3] text-xs font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00F2FE]/10 text-[#00F2FE] border border-[#00F2FE]/30 text-xs font-semibold mb-3 shadow-[0_0_10px_rgba(0,242,254,0.15)]">
               <Sparkles className="w-3.5 h-3.5" />
               <span>AI Engine Active</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#F1F5F9] font-display">
-              Welcome back, <span className="text-[#22C1C3]">Candidate</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#F8FAFC] font-display">
+              Welcome back, <span className="text-gradient">Candidate</span>
             </h2>
             <p className="text-sm text-[#94A3B8] max-w-xl mt-1 leading-relaxed">
-              Your resume profile is currently indexed against <strong className="text-[#F1F5F9]">industry benchmark roles</strong>. Upload an updated version anytime to recalculate ATS match rates.
+              Your resume profile is currently indexed against <strong className="text-[#F8FAFC]">industry benchmark roles</strong>. Upload an updated version anytime to recalculate ATS match rates.
             </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => navigate("/upload")}
-              className="glow-cyan-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs text-[#0B151B]"
+              className="glow-cyan-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-xs text-[#070D12]"
             >
               <UploadCloud className="w-4 h-4" />
               <span>Analyse Resume</span>
             </button>
             <Link
               to="/ats-analysis"
-              className="px-5 py-3 rounded-xl border border-[#263B43] bg-[#14232B] hover:bg-[#1B2F3A] text-xs font-semibold text-[#F1F5F9] transition-colors"
+              className="px-5 py-3 rounded-xl border border-[#1E3A47] bg-[#0F1D24] hover:bg-[#152B35] hover:border-[#00F2FE]/40 text-xs font-semibold text-[#F8FAFC] transition-all"
             >
               Full Report
             </Link>
