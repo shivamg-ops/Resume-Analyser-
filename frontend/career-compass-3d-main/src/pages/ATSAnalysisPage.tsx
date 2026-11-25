@@ -15,6 +15,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { ATSScoreCard } from "@/components/ui-custom/ATSScoreCard";
 import { SkillBadge } from "@/components/ui-custom/SkillBadge";
 import { EmptyState } from "@/components/ui-custom/EmptyState";
+import { ResumeAdvisorPanel } from "@/components/ui-custom/ResumeAdvisorPanel";
 import { useAnalysis } from "@/context/AnalysisContext";
 
 export const ATSAnalysisPage: React.FC = () => {
@@ -206,6 +207,15 @@ export const ATSAnalysisPage: React.FC = () => {
               </li>
             </ul>
           </div>
+        </div>
+        {/* AI Resume Advisor & ATS Optimization Panel */}
+        <div className="pt-4">
+          <ResumeAdvisorPanel
+            extractedSkills={extractedSkills}
+            missingSkills={missingSkills}
+            targetRole={bestJob?.job || targetRole}
+            atsScore={atsScore}
+          />
         </div>
       </div>
     </DashboardLayout>
