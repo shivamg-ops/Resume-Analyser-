@@ -25,13 +25,13 @@ export const ATSAnalysisPage: React.FC = () => {
   if (!currentAnalysis) {
     return (
       <DashboardLayout
-        title="ATS Score Deep Dive"
-        subtitle="Detailed keyword matching and semantic parsing diagnostics."
+        title="Resume & ATS Review"
+        subtitle="Detailed insights into how recruiters and tracking systems perceive your profile."
       >
         <EmptyState
-          title="No Resume Active for ATS Analysis"
-          description="Upload your resume or select a previous analysis from history to review its detailed ATS scoring breakdown."
-          actionText="Upload Resume Now"
+          title="No Resume Selected Yet"
+          description="Upload your resume or pick an earlier one from your history to receive personalized feedback and advice."
+          actionText="Upload Resume"
           actionLink="/upload"
         />
       </DashboardLayout>
@@ -45,8 +45,8 @@ export const ATSAnalysisPage: React.FC = () => {
 
   return (
     <DashboardLayout
-      title="ATS Score Deep Dive"
-      subtitle={`Diagnostic breakdown for ${currentFileName || "Uploaded Resume"} against ${bestJob?.job || targetRole}.`}
+      title="Resume Health & ATS Score"
+      subtitle={`Personalized career feedback for ${currentFileName || "Your Resume"} targeting ${bestJob?.job || targetRole}.`}
     >
       <div className="space-y-8">
         {/* Main Score Hero Gauge */}

@@ -16,11 +16,24 @@ class AnalyzeResumeView(APIView):
     def post(self, request):
         if 'resume' not in request.FILES:
             return Response(
-                {"error": "No resume file uploaded"},
+                {
+                    "error": "Please select a resume file (PDF, DOCX, or TXT) to begin your analysis.",
+                    "code": "MISSING_FILE"
+                },
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         resume_file = request.FILES['resume']
+
+        # File size check (e.g. 15MB)
+        if resume_file.size > 15 * 1024 * 1024:
+            return Response(
+                {
+                    "error": "The uploaded file is larger than 15MB. Please upload a more compact version of your resume.",
+                    "code": "FILE_TOO_LARGE"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         # Save resume
         os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
@@ -30,8 +43,18 @@ class AnalyzeResumeView(APIView):
             for chunk in resume_file.chunks():
                 f.write(chunk)
 
-        # Parse resume
-        resume_text = parse_resume(resume_path)
+        # Parse resume with empathetic error handling
+        try:
+            resume_text = parse_resume(resume_path)
+        except Exception as e:
+            return Response(
+                {
+                    "error": f"We encountered trouble reading this file format. Please try saving your resume as a standard PDF or Word (.docx) file.",
+                    "details": str(e)
+                },
+                status=status.HTTP_422_UNPROCESSABLE_ENTITY
+            )
+
         contact_info = extract_contact_info(resume_text)
 
         SKILL_LIST = [

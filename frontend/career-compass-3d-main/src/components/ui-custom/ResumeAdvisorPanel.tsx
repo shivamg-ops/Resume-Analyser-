@@ -83,15 +83,15 @@ export const ResumeAdvisorPanel: React.FC<ResumeAdvisorPanelProps> = ({
       <div className="saas-card p-6 border-[#22C1C3]/40 bg-gradient-to-r from-[#14232B] via-[#14232B] to-[#22C1C3]/10">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#22C1C3]/15 text-[#22C1C3] text-xs font-bold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00F2FE]/15 text-[#00F2FE] text-xs font-bold mb-3 shadow-[0_0_10px_rgba(0,242,254,0.15)]">
               <Zap className="w-3.5 h-3.5" />
-              <span>AI Resume Coach & ATS Optimizer</span>
+              <span>Personal Career Coach & Resume Advice</span>
             </div>
-            <h3 className="text-xl font-extrabold text-[#F1F5F9] font-display">
-              Tailored Suggestions to Maximize ATS Pass Rate
+            <h3 className="text-xl font-extrabold text-[#F8FAFC] font-display">
+              Actionable Tips to Elevate Your Resume
             </h3>
             <p className="text-xs text-[#94A3B8] max-w-2xl mt-1 leading-relaxed">
-              We analyzed your document structure against real-world Applicant Tracking Systems. Follow these exact improvements to boost search visibility and recruiter engagement for <strong className="text-[#F1F5F9]">{targetRole}</strong>.
+              We reviewed your resume against hiring criteria for <strong className="text-[#F8FAFC]">{targetRole}</strong>. Here are friendly, proven steps and bullet templates to help you stand out to hiring managers.
             </p>
           </div>
         </div>

@@ -77,25 +77,25 @@ export const ResumeUploadPage: React.FC = () => {
 
     setErrorMessage(null);
     try {
-      setLoadingStep("Reading document structure & paragraphs...");
+      setLoadingStep("Reading your document and preparing the parser...");
       await new Promise((r) => setTimeout(r, 400));
 
-      setLoadingStep("Extracting technical entities & skill taxonomy...");
+      setLoadingStep("Identifying your strengths, technical skills & achievements...");
       await new Promise((r) => setTimeout(r, 400));
 
-      setLoadingStep("Computing semantic embeddings & ATS alignment...");
+      setLoadingStep("Benchmarking against top industry hiring standards...");
       await analyzeResume(selectedFile, targetRole);
 
       navigate("/ats-analysis");
     } catch (err: any) {
-      setErrorMessage(err.message || "Failed to analyze resume. Please ensure the backend is running.");
+      setErrorMessage(err.message || "We couldn't connect to the analysis engine. Please ensure the backend is running.");
     }
   };
 
   return (
     <DashboardLayout
-      title="Upload & Ingestion"
-      subtitle="Feed your latest resume into our neural pipeline for automated ATS benchmarking."
+      title="Upload Your Resume"
+      subtitle="Let our AI review your experience, spot missing keywords, and suggest recruiter-approved improvements."
     >
       <div className="max-w-3xl mx-auto space-y-8">
         {/* Step 1: Target Role Selector */}

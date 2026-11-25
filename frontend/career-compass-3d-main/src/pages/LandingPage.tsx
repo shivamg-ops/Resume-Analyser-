@@ -67,15 +67,15 @@ export const LandingPage: React.FC = () => {
       <section className="relative z-10 container mx-auto px-6 pt-20 pb-28 text-center max-w-4xl">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00F2FE]/40 bg-[#00F2FE]/10 text-[#00F2FE] text-xs font-bold mb-8 animate-pulse-glow shadow-sm shadow-[#00F2FE]/20">
           <Sparkles className="w-4 h-4" />
-          <span>Next-Generation Neural Career Matcher</span>
+          <span>Your Personal AI Career & Resume Mentor</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 font-display leading-[1.1]">
-          Find Your <span className="text-gradient-cyan">Perfect Career</span> with AI
+          Land Your <span className="text-gradient-cyan">Dream Job</span> With Confidence
         </h1>
 
         <p className="text-base sm:text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed mb-12">
-          Intelligently parse resumes, calculate deep ATS compatibility scores, detect critical skill gaps, and match with high-growth tech positions.
+          Get honest, recruiter-grade feedback on your resume in seconds. Discover what ATS algorithms love, which high-impact keywords you're missing, and which tech roles fit you best.
         </p>
 
         {/* Upload Action Area */}
