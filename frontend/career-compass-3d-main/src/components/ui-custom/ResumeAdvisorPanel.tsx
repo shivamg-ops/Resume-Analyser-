@@ -106,16 +106,19 @@ export const ResumeAdvisorPanel: React.FC<ResumeAdvisorPanelProps> = ({
                 {getCategoryBadge(sug.category)}
               </div>
 
-              <p className="text-xs text-[#64748B] leading-relaxed mb-4">
-                {sug.description}
+              <p className="text-xs text-[#64748B] leading-relaxed mb-2">
+                {sug.problem}
+              </p>
+              <p className="text-xs text-[#0F172A] leading-relaxed mb-4 font-medium">
+                {sug.recommendation}
               </p>
 
-              {sug.bulletExample && (
+              {sug.exampleSnippet && (
                 <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mb-3">
                   <div className="flex items-center justify-between text-[11px] font-semibold text-[#635BDB] mb-1.5">
                     <span>Recommended Resume Bullet Template</span>
                     <button
-                      onClick={() => handleCopy(sug.bulletExample!, sug.id)}
+                      onClick={() => handleCopy(sug.exampleSnippet!, sug.id)}
                       className="inline-flex items-center gap-1 hover:text-[#5249D4]"
                       title="Copy to clipboard"
                     >
@@ -132,8 +135,8 @@ export const ResumeAdvisorPanel: React.FC<ResumeAdvisorPanelProps> = ({
                       )}
                     </button>
                   </div>
-                  <p className="text-xs text-[#0F172A] italic leading-relaxed">
-                    "{sug.bulletExample}"
+                  <p className="text-xs text-[#0F172A] italic leading-relaxed whitespace-pre-line">
+                    "{sug.exampleSnippet}"
                   </p>
                 </div>
               )}
@@ -160,7 +163,7 @@ export const ResumeAdvisorPanel: React.FC<ResumeAdvisorPanelProps> = ({
             Replace passive verbs (e.g., "helped with", "worked on") with these strong action verbs favored by technical recruiters.
           </p>
           <div className="flex flex-wrap gap-2">
-            {powerWordData.words.map((word, idx) => (
+            {(powerWordData.actionVerbs || []).map((word, idx) => (
               <span
                 key={idx}
                 className="px-3 py-1 rounded-full text-xs font-semibold bg-[#F4F3FF] text-[#635BDB] border border-[#635BDB]/20"
