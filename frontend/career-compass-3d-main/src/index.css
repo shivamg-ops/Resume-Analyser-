@@ -7,55 +7,50 @@
 
 @layer base {
   :root {
-    /* Upgraded Vibrant Neon-Teal & Obsidian SaaS Palette:
-       Deep Canvas: #070D12 (Richer, deeper midnight navy)
-       Card Background: #0F1D24 (Deep lustrous cyan-tinted slate)
-       Card Surface Light: #162832
-       Primary (Electric Cyan): #00F2FE / #22D3EE (Pure high-luminance neon)
-       Secondary (Teal-Emerald): #0EA5E9 / #0D9488
-       Border: #1E3844 (Crisp contrast border)
-       Main Text: #FFFFFF (Crisp stark white)
-       Secondary Text: #94A3B8 (Soft readable silver slate)
+    /* Standard Enterprise SaaS Theme
+       Canvas: Clean Deep Midnight Slate (#0A0F14)
+       Cards & Surfaces: Refined Crisp Charcoal (#111822)
+       Borders: Subtle Clean Slate (#1E293B)
+       Primary Brand: Modern Professional Sky/Cyan (#0284C7 / #38BDF8)
+       Accent / Status: Emerald (#10B981) for success, Rose (#F43F5E) for gaps
+       Text: High legibility Crisp White (#F8FAFC) & Neutral Slate (#94A3B8)
     */
 
-    --background: 206 45% 5%;
-    --foreground: 0 0% 100%;
+    --background: 216 35% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 203 40% 10%;
-    --card-foreground: 0 0% 100%;
+    --card: 217 33% 10%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 203 40% 10%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 217 33% 10%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 187 96% 53%;
-    --primary-foreground: 206 45% 5%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 216 35% 6%;
 
-    --secondary: 175 84% 36%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 203 35% 15%;
-    --muted-foreground: 215 20% 70%;
+    --muted: 217 25% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 187 96% 53%;
-    --accent-foreground: 206 45% 5%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 216 35% 6%;
 
-    --destructive: 0 90% 64%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --success: 154 75% 45%;
-    --success-foreground: 0 0% 100%;
+    --success: 154 65% 45%;
+    --success-foreground: 210 40% 98%;
 
-    --warning: 38 96% 54%;
-    --warning-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 216 35% 6%;
 
-    --border: 198 38% 20%;
-    --input: 198 38% 16%;
-    --ring: 187 96% 53%;
+    --border: 217 28% 18%;
+    --input: 217 28% 18%;
+    --ring: 199 89% 48%;
 
-    --radius: 0.875rem;
-
-    --glow-cyan: 187 96% 53%;
-    --glow-teal: 175 84% 36%;
+    --radius: 0.75rem;
   }
 }
 
@@ -65,124 +60,76 @@
   }
 
   body {
-    @apply bg-[#070D12] text-[#FFFFFF] font-sans antialiased;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #070D12;
-    background-image: 
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 242, 254, 0.15), transparent 70%),
-      radial-gradient(circle 600px at 0% 20%, rgba(13, 148, 136, 0.12), transparent 60%),
-      radial-gradient(circle 500px at 100% 60%, rgba(0, 242, 254, 0.08), transparent 50%),
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(7, 13, 18, 1), transparent);
-    background-attachment: fixed;
+    @apply bg-[#0A0F14] text-[#F8FAFC] font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0A0F14;
+    background-image: none;
     min-height: 100vh;
   }
 }
 
 @layer components {
-  /* Ultra-Premium Glass Cards */
+  /* Clean Professional Cards */
   .saas-card {
-    @apply relative overflow-hidden rounded-2xl border border-[#1E3844] bg-[#0F1D24]/90 backdrop-blur-2xl;
-    box-shadow: 
-      0 12px 36px -10px rgba(0, 0, 0, 0.7),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
-      inset 0 0 20px 0 rgba(0, 242, 254, 0.02);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    @apply relative overflow-hidden rounded-xl border border-[#1E293B] bg-[#111822];
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
   }
 
   .saas-card:hover {
-    border-color: rgba(0, 242, 254, 0.5);
-    background: linear-gradient(145deg, rgba(15, 29, 36, 0.95), rgba(22, 40, 50, 0.9));
-    box-shadow: 
-      0 20px 45px -10px rgba(0, 0, 0, 0.8),
-      0 0 25px rgba(0, 242, 254, 0.18),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    @apply border-[#334155];
   }
 
   .saas-card-static {
-    @apply relative overflow-hidden rounded-2xl border border-[#1E3844] bg-[#0F1D24]/90 backdrop-blur-2xl;
-    box-shadow: 
-      0 12px 36px -10px rgba(0, 0, 0, 0.7),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    @apply relative overflow-hidden rounded-xl border border-[#1E293B] bg-[#111822];
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
   }
 
-  /* Vibrant Glowing Buttons */
+  /* Professional Buttons */
   .glow-cyan-btn {
-    background: linear-gradient(135deg, #00F2FE 0%, #0EA5E9 50%, #0D9488 100%);
-    box-shadow: 0 0 24px rgba(0, 242, 254, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-    color: #070D12 !important;
-    font-weight: 700;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    @apply relative inline-flex items-center justify-center font-semibold rounded-lg bg-[#0284C7] hover:bg-[#0369A1] text-white shadow-sm transition-all duration-200 active:scale-[0.98];
   }
 
-  .glow-cyan-btn:hover {
-    box-shadow: 0 0 35px rgba(0, 242, 254, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
-    transform: translateY(-1.5px) scale(1.02);
+  .glow-teal-btn {
+    @apply relative inline-flex items-center justify-center font-semibold rounded-lg bg-[#0F766E] hover:bg-[#115E59] text-white shadow-sm transition-all duration-200 active:scale-[0.98];
   }
 
-  .glow-cyan-btn:active {
-    transform: translateY(0px) scale(0.99);
-  }
-
-  .text-glow {
-    text-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
-  }
-
-  /* Skill Badges with High Contrast */
+  /* Clean Badges */
   .badge-skill {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all;
-    background: rgba(0, 242, 254, 0.12);
-    border: 1px solid rgba(0, 242, 254, 0.4);
-    color: #00F2FE;
-    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
-  }
-
-  .badge-skill:hover {
-    background: rgba(0, 242, 254, 0.22);
-    border-color: #00F2FE;
-    box-shadow: 0 0 16px rgba(0, 242, 254, 0.4);
-    transform: translateY(-1px);
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-[#0284C7]/10 text-[#38BDF8] border border-[#0284C7]/20;
   }
 
   .badge-missing {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all;
-    background: rgba(244, 63, 94, 0.12);
-    border: 1px solid rgba(244, 63, 94, 0.4);
-    color: #FB7185;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20;
   }
 
-  .badge-missing:hover {
-    background: rgba(244, 63, 94, 0.22);
-    box-shadow: 0 0 14px rgba(244, 63, 94, 0.3);
+  .text-gradient-cyan {
+    @apply text-[#38BDF8];
   }
 
-  /* Subtle Custom Scrollbar */
+  .text-gradient {
+    @apply text-[#F8FAFC];
+  }
+
+  /* Custom Clean Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #070D12;
+    background: #0A0F14;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1E3844;
+    background: #1E293B;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00F2FE;
+    background: #334155;
   }
 }
 
 @layer utilities {
   .bg-gradient-saas {
-    background: linear-gradient(135deg, #00F2FE 0%, #0EA5E9 50%, #0D9488 100%);
-  }
-
-  .text-gradient-cyan {
-    background: linear-gradient(135deg, #00F2FE 0%, #38BDF8 40%, #2DD4BF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.35));
+    background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
   }
 }

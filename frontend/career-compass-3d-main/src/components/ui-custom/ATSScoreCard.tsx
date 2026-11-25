@@ -36,7 +36,7 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
   }
 
   return (
-    <div className="saas-card p-7 flex flex-col md:flex-row items-center gap-7 border-[#1E3844]">
+    <div className="saas-card p-6 md:p-7 flex flex-col md:flex-row items-center gap-6 border-[#1E293B]">
       {/* Radial Gauge */}
       <div className="relative flex items-center justify-center shrink-0">
         <svg
@@ -49,7 +49,7 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
             cx={radius + strokeWidth}
             cy={radius + strokeWidth}
             r={radius}
-            stroke="#1E3844"
+            stroke="#1E293B"
             strokeWidth={strokeWidth}
             fill="transparent"
           />
@@ -64,17 +64,16 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
             strokeDashoffset={strokeDashoffset}
             strokeLinecap="round"
             fill="transparent"
-            className="transition-all duration-1000 ease-out"
-            style={{ filter: `drop-shadow(0 0 16px ${colorHex}88)` }}
+            className="transition-all duration-700 ease-out"
           />
         </svg>
 
         {/* Center score readout */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-4xl md:text-5xl font-black text-[#FFFFFF] font-display tracking-tight">
+          <span className="text-3xl md:text-4xl font-bold text-[#F8FAFC] tracking-tight">
             {normalizedScore}%
           </span>
-          <span className="text-[10px] uppercase tracking-widest font-bold text-[#94A3B8]">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#94A3B8]">
             ATS Score
           </span>
         </div>
@@ -83,38 +82,37 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
       {/* Info details */}
       <div className="flex-1 text-center md:text-left">
         <div
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-3 shadow-sm"
+          className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-xs font-medium mb-2.5"
           style={{
-            backgroundColor: `${colorHex}18`,
+            backgroundColor: `${colorHex}15`,
             color: colorHex,
-            border: `1px solid ${colorHex}44`,
-            boxShadow: `0 0 12px ${colorHex}22`
+            border: `1px solid ${colorHex}33`,
           }}
         >
-          <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: colorHex }} />
+          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: colorHex }} />
           {tierLabel}
         </div>
 
-        <h3 className="text-2xl font-bold text-[#FFFFFF] mb-1.5 font-display">
+        <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">
           {role || "Target Role"}
         </h3>
-        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-5">
+        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-4">
           {tierDescription}
         </p>
 
         {/* Breakdown bars */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-[#1E3844]">
-          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
-            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Keyword Match</span>
-            <span className="text-sm font-bold text-[#FFFFFF]">{Math.min(100, normalizedScore + 5)}%</span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-3 border-t border-[#1E293B]">
+          <div className="p-2.5 rounded-lg bg-[#0A0F14] border border-[#1E293B]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-semibold block mb-0.5">Keyword Match</span>
+            <span className="text-sm font-bold text-[#F8FAFC]">{Math.min(100, normalizedScore + 5)}%</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
-            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Semantic Fit</span>
-            <span className="text-sm font-bold text-[#00F2FE]">{normalizedScore}%</span>
+          <div className="p-2.5 rounded-lg bg-[#0A0F14] border border-[#1E293B]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-semibold block mb-0.5">Semantic Fit</span>
+            <span className="text-sm font-bold text-[#38BDF8]">{normalizedScore}%</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#070D12]/60 border border-[#1E3844]">
-            <span className="text-[10px] text-[#94A3B8] uppercase font-bold block mb-0.5">Format Integrity</span>
-            <span className="text-sm font-bold text-emerald-400">98%</span>
+          <div className="p-2.5 rounded-lg bg-[#0A0F14] border border-[#1E293B]">
+            <span className="text-[10px] text-[#94A3B8] uppercase font-semibold block mb-0.5">Format Integrity</span>
+            <span className="text-sm font-bold text-[#10B981]">98%</span>
           </div>
         </div>
       </div>
