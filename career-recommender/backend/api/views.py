@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
 import os
+import json
+from datetime import datetime
 
 from parsers.parser import parse_resume, extract_contact_info
 from models.ats_scorer import extract_skills
@@ -68,6 +70,23 @@ class AnalyzeResumeView(APIView):
 
         # 🔥 ALL scoring happens here now
         job_matches = match_job(extracted_skills)
+
+        # Save analysis result as JSON file on user's system
+        result_data = {
+            "extracted_skills": extracted_skills,
+            "job_matches": job_matches,
+            "resume_file": resume_file.name,
+            "resume_text": resume_text,
+            "contact_info": contact_info,
+            "analyzed_at": datetime.now().isoformat()
+        }
+
+        results_dir = os.path.join(settings.MEDIA_ROOT, "results")
+        os.makedirs(results_dir, exist_ok=True)
+        result_filename = f"resume_result_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        result_path = os.path.join(results_dir, result_filename)
+        with open(result_path, "w", encoding="utf-8") as f:
+            json.dump(result_data, f, indent=2, ensure_ascii=False)
 
         return Response({
             "extracted_skills": extracted_skills,
