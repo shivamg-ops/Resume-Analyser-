@@ -7,50 +7,53 @@
 
 @layer base {
   :root {
-    /* Standard Enterprise SaaS Theme
-       Canvas: Clean Deep Midnight Slate (#0A0F14)
-       Cards & Surfaces: Refined Crisp Charcoal (#111822)
-       Borders: Subtle Clean Slate (#1E293B)
-       Primary Brand: Modern Professional Sky/Cyan (#0284C7 / #38BDF8)
-       Accent / Status: Emerald (#10B981) for success, Rose (#F43F5E) for gaps
-       Text: High legibility Crisp White (#F8FAFC) & Neutral Slate (#94A3B8)
+    /* Dribbble / Modern Enterprise Light Aesthetic:
+       Main Background: #F7F8FC (Soft clean canvas)
+       Card Background: #FFFFFF (Crisp white surface)
+       Borders: #E2E8F0 / #EDF2F7 (Clean subtle divider)
+       Primary Accent: #635BDB (Stripe/Dribbble Signature Purple)
+       Success / Progress: #18A999 (Vibrant Teal)
+       Highlights / Badges: #F4A340 (Warm Orange)
+       Text Main: #0F172A (Deep crisp charcoal)
+       Text Secondary: #64748B (Readable slate)
+       Soft Purple Tint: #F4F3FF (AI advice / highlights)
     */
 
-    --background: 216 35% 6%;
-    --foreground: 210 40% 98%;
+    --background: 230 40% 98%;
+    --foreground: 222 47% 11%;
 
-    --card: 217 33% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 217 33% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 199 89% 48%;
-    --primary-foreground: 216 35% 6%;
+    --primary: 244 63% 61%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 25% 27%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 173 75% 38%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217 25% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 216 35% 6%;
+    --accent: 34 89% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 350 89% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 154 65% 45%;
-    --success-foreground: 210 40% 98%;
+    --success: 173 75% 38%;
+    --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 216 35% 6%;
+    --warning: 34 89% 60%;
+    --warning-foreground: 0 0% 100%;
 
-    --border: 217 28% 18%;
-    --input: 217 28% 18%;
-    --ring: 199 89% 48%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 244 63% 61%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
   }
 }
 
@@ -60,76 +63,94 @@
   }
 
   body {
-    @apply bg-[#0A0F14] text-[#F8FAFC] font-sans antialiased;
+    @apply bg-[#F7F8FC] text-[#0F172A] font-sans antialiased;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #0A0F14;
-    background-image: none;
+    background-color: #F7F8FC;
     min-height: 100vh;
   }
 }
 
 @layer components {
-  /* Clean Professional Cards */
+  /* Modern Dribbble Clean Cards */
   .saas-card {
-    @apply relative overflow-hidden rounded-xl border border-[#1E293B] bg-[#111822];
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    @apply relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF];
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 4px 16px -2px rgba(99, 91, 219, 0.04);
     transition: all 0.2s ease;
   }
 
   .saas-card:hover {
-    @apply border-[#334155];
+    @apply border-[#CBD5E1];
+    box-shadow: 0 4px 20px -2px rgba(99, 91, 219, 0.08);
   }
 
   .saas-card-static {
-    @apply relative overflow-hidden rounded-xl border border-[#1E293B] bg-[#111822];
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    @apply relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF];
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 4px 16px -2px rgba(0, 0, 0, 0.02);
   }
 
-  /* Professional Buttons */
-  .glow-cyan-btn {
-    @apply relative inline-flex items-center justify-center font-semibold rounded-lg bg-[#0284C7] hover:bg-[#0369A1] text-white shadow-sm transition-all duration-200 active:scale-[0.98];
+  /* Primary Button (Purple #635BDB) */
+  .glow-cyan-btn, .btn-primary {
+    @apply relative inline-flex items-center justify-center font-semibold rounded-xl bg-[#635BDB] hover:bg-[#5249D4] text-white shadow-sm shadow-[#635BDB]/25 transition-all duration-200 active:scale-[0.98];
   }
 
-  .glow-teal-btn {
-    @apply relative inline-flex items-center justify-center font-semibold rounded-lg bg-[#0F766E] hover:bg-[#115E59] text-white shadow-sm transition-all duration-200 active:scale-[0.98];
+  /* Success / Action Button (Teal #18A999) */
+  .glow-teal-btn, .btn-teal {
+    @apply relative inline-flex items-center justify-center font-semibold rounded-xl bg-[#18A999] hover:bg-[#139687] text-white shadow-sm shadow-[#18A999]/25 transition-all duration-200 active:scale-[0.98];
   }
 
-  /* Clean Badges */
+  /* Warm Accent Button (Orange #F4A340) */
+  .btn-orange {
+    @apply relative inline-flex items-center justify-center font-semibold rounded-xl bg-[#F4A340] hover:bg-[#E2922D] text-white shadow-sm shadow-[#F4A340]/25 transition-all duration-200 active:scale-[0.98];
+  }
+
+  /* Badges */
   .badge-skill {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-[#0284C7]/10 text-[#38BDF8] border border-[#0284C7]/20;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#18A999]/10 text-[#0E7A6E] border border-[#18A999]/25;
   }
 
   .badge-missing {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F4A340]/15 text-[#C06F11] border border-[#F4A340]/30;
   }
 
-  .text-gradient-cyan {
-    @apply text-[#38BDF8];
+  .badge-purple {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#635BDB]/10 text-[#635BDB] border border-[#635BDB]/20;
+  }
+
+  /* AI Advice / Light Purple Surface */
+  .surface-ai-advice {
+    @apply rounded-2xl border border-[#635BDB]/20 bg-[#F4F3FF];
+  }
+
+  .text-gradient-purple {
+    @apply text-[#635BDB];
   }
 
   .text-gradient {
-    @apply text-[#F8FAFC];
+    @apply text-[#0F172A];
   }
 
-  /* Custom Clean Scrollbar */
+  /* Clean Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0A0F14;
+    background: #F7F8FC;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1E293B;
+    background: #CBD5E1;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: #94A3B8;
   }
 }
 
 @layer utilities {
-  .bg-gradient-saas {
-    background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  .bg-gradient-purple {
+    background: linear-gradient(135deg, #635BDB 0%, #7E74FF 100%);
+  }
+  .bg-gradient-teal {
+    background: linear-gradient(135deg, #18A999 0%, #20C4B2 100%);
   }
 }

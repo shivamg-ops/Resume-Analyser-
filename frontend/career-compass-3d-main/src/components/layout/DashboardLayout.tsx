@@ -14,12 +14,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   subtitle,
 }) => {
   return (
-    <div className="min-h-screen bg-[#0B151B] text-[#F1F5F9] flex">
+    <div className="min-h-screen bg-[#F7F8FC] text-[#0F172A] flex">
       {/* Sidebar Navigation */}
       <Sidebar />
 
       {/* Main Content Area */}
-      <div className="flex-1 ml-64 flex flex-col min-h-screen">
+      <div className="flex-1 ml-60 flex flex-col min-h-screen">
         <Navbar title={title} subtitle={subtitle} />
         <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto animate-fade-in">
           {children}
@@ -28,4 +28,3 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     </div>
   );
 };
-

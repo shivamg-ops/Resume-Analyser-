@@ -66,61 +66,63 @@ export const ATSAnalysisPage: React.FC = () => {
         {/* 3 Metric Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="saas-card p-5">
-            <div className="flex items-center gap-3 mb-3 text-emerald-400">
+            <div className="flex items-center gap-3 mb-3 text-[#18A999]">
               <CheckCircle2 className="w-5 h-5" />
-              <h4 className="font-bold text-sm text-[#F1F5F9]">Matched Competencies</h4>
+              <h4 className="font-bold text-sm text-[#0F172A]">Matched Competencies</h4>
             </div>
-            <p className="text-2xl font-bold font-display text-[#F1F5F9] mb-1">
+            <p className="text-2xl font-bold font-display text-[#0F172A] mb-1">
               {extractedSkills.length}
             </p>
-            <p className="text-xs text-[#94A3B8]">
+            <p className="text-xs text-[#64748B]">
               High-value technical and core skills successfully recognized.
             </p>
           </div>
 
           <div className="saas-card p-5">
-            <div className="flex items-center gap-3 mb-3 text-rose-400">
+            <div className="flex items-center gap-3 mb-3 text-[#F4A340]">
               <XCircle className="w-5 h-5" />
-              <h4 className="font-bold text-sm text-[#F1F5F9]">Missing Critical Skills</h4>
+              <h4 className="font-bold text-sm text-[#0F172A]">Missing Critical Skills</h4>
             </div>
-            <p className="text-2xl font-bold font-display text-[#F1F5F9] mb-1">
+            <p className="text-2xl font-bold font-display text-[#0F172A] mb-1">
               {missingSkills.length}
             </p>
-            <p className="text-xs text-[#94A3B8]">
-              Skills expected for this role profile that were absent in text.
+            <p className="text-xs text-[#64748B]">
+              Valuable keywords to consider adding to your resume experience.
             </p>
           </div>
 
           <div className="saas-card p-5">
-            <div className="flex items-center gap-3 mb-3 text-[#22C1C3]">
+            <div className="flex items-center gap-3 mb-3 text-[#635BDB]">
               <TrendingUp className="w-5 h-5" />
-              <h4 className="font-bold text-sm text-[#F1F5F9]">Semantic Relevance</h4>
+              <h4 className="font-bold text-sm text-[#0F172A]">Semantic Fit Score</h4>
             </div>
-            <p className="text-2xl font-bold font-display text-[#F1F5F9] mb-1">
-              {Math.round(bestJob?.semantic_score ?? 72)}%
+            <p className="text-2xl font-bold font-display text-[#0F172A] mb-1">
+              {Math.round(bestJob?.semantic_score ?? 78)}%
             </p>
-            <p className="text-xs text-[#94A3B8]">
-              Vector embedding cosine distance via sentence-transformers.
+            <p className="text-xs text-[#64748B]">
+              Contextual vector similarity to industry job descriptions.
             </p>
           </div>
         </div>
 
-        {/* Keyword Breakdown Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Matched Keywords */}
+        {/* Matched vs Missing Skills breakdown */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Matched Skills */}
           <div className="saas-card p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                <h4 className="font-bold text-[#F1F5F9] text-base">Identified Technical Skills</h4>
+                <div className="w-3 h-3 rounded-full bg-[#18A999]" />
+                <h4 className="font-bold text-[#0F172A] text-base">
+                  Identified Profile Skills ({extractedSkills.length})
+                </h4>
               </div>
-              <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full">
-                {extractedSkills.length} Detected
+              <span className="text-xs text-[#18A999] font-semibold bg-[#18A999]/10 px-2.5 py-0.5 rounded-full">
+                Validated
               </span>
             </div>
 
-            <p className="text-xs text-[#94A3B8] leading-relaxed mb-4">
-              These keywords match standard industry position descriptors and contribute directly to your ATS pass rate:
+            <p className="text-xs text-[#64748B] mb-4">
+              These keywords are prominent in your resume and align with modern recruiter queries:
             </p>
 
             <div className="flex flex-wrap gap-2">
@@ -130,92 +132,85 @@ export const ATSAnalysisPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Missing Keywords */}
+          {/* Missing Skills */}
           <div className="saas-card p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <XCircle className="w-5 h-5 text-rose-400" />
-                <h4 className="font-bold text-[#F1F5F9] text-base">Keywords to Add (Gaps)</h4>
+                <div className="w-3 h-3 rounded-full bg-[#F4A340]" />
+                <h4 className="font-bold text-[#0F172A] text-base">
+                  Recommended Additions ({missingSkills.length})
+                </h4>
               </div>
-              <span className="text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-0.5 rounded-full">
-                {missingSkills.length} Missing
+              <span className="text-xs text-[#C06F11] font-semibold bg-[#F4A340]/15 px-2.5 py-0.5 rounded-full">
+                ATS Opportunity
               </span>
             </div>
 
-            {missingSkills.length === 0 ? (
-              <div className="py-8 text-center text-xs text-[#94A3B8]">
-                <Award className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-                <p className="font-semibold text-emerald-400">Zero Critical Skill Deficits!</p>
-                <p>Your resume contains all foundational skills required for this role.</p>
+            <p className="text-xs text-[#64748B] mb-4">
+              Adding projects or bullet points reflecting these skills can notably increase match score:
+            </p>
+
+            {missingSkills.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {missingSkills.map((skill, idx) => (
+                  <SkillBadge key={idx} name={skill} type="missing" />
+                ))}
               </div>
             ) : (
-              <>
-                <p className="text-xs text-[#94A3B8] leading-relaxed mb-4">
-                  Consider incorporating these missing keywords in your summary, bullet points, or technical toolbars:
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {missingSkills.map((skill, idx) => (
-                    <SkillBadge key={idx} name={skill} type="missing" />
-                  ))}
-                </div>
-              </>
+              <div className="p-4 rounded-xl bg-[#18A999]/10 border border-[#18A999]/20 text-xs text-[#0E7A6E]">
+                No critical skills missing for this role profile. Great alignment!
+              </div>
             )}
-
-            <div className="pt-4 border-t border-[#263B43] flex items-center justify-between mt-4">
-              <Link to="/skill-gap" className="text-xs font-semibold text-[#22C1C3] hover:underline flex items-center gap-1">
-                <span>View Full Skill Gap Matrix</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
           </div>
         </div>
 
-        {/* Strengths & Improvement Suggestions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Strengths & Suggestions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="saas-card p-6">
-            <div className="flex items-center gap-2 mb-4 text-[#22C1C3]">
+            <div className="flex items-center gap-2 mb-4 text-[#18A999]">
               <ShieldCheck className="w-5 h-5" />
-              <h4 className="font-bold text-[#F1F5F9] text-base">Key Profile Strengths</h4>
+              <h4 className="font-bold text-[#0F172A] text-base">Key Profile Strengths</h4>
             </div>
 
-            <ul className="space-y-3 text-xs text-[#94A3B8] leading-relaxed">
+            <ul className="space-y-3 text-xs text-[#64748B] leading-relaxed">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C1C3] mt-1 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#18A999] mt-1 shrink-0" />
                 <span>Clear presence of core programming languages and frameworks required for engineering roles.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C1C3] mt-1 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#18A999] mt-1 shrink-0" />
                 <span>Solid formatting structure with clean text extraction and minimal parsing friction.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C1C3] mt-1 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#18A999] mt-1 shrink-0" />
                 <span>Well-defined terminology for modern frontend and backend development stacks.</span>
               </li>
             </ul>
           </div>
 
           <div className="saas-card p-6">
-            <div className="flex items-center gap-2 mb-4 text-amber-400">
+            <div className="flex items-center gap-2 mb-4 text-[#F4A340]">
               <Lightbulb className="w-5 h-5" />
-              <h4 className="font-bold text-[#F1F5F9] text-base">Actionable Recommendations</h4>
+              <h4 className="font-bold text-[#0F172A] text-base">Actionable Recommendations</h4>
             </div>
 
-            <ul className="space-y-3 text-xs text-[#94A3B8] leading-relaxed">
+            <ul className="space-y-3 text-xs text-[#64748B] leading-relaxed">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0" />
-                <span>Explicitly list missing tools such as <strong className="text-[#F1F5F9]">API design, Docker, or CI/CD</strong> in your project descriptions.</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F4A340] mt-1 shrink-0" />
+                <span>Explicitly list tools such as <strong className="text-[#0F172A]">API design, Docker, or CI/CD</strong> in your project descriptions.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F4A340] mt-1 shrink-0" />
                 <span>Quantify bullet points with tangible metrics (e.g., "Reduced query latency by 35% using Redis").</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F4A340] mt-1 shrink-0" />
                 <span>Re-upload the modified version to observe instant score improvements.</span>
               </li>
             </ul>
           </div>
         </div>
+
         {/* AI Resume Advisor & ATS Optimization Panel */}
         <div className="pt-4">
           <ResumeAdvisorPanel
@@ -229,4 +224,3 @@ export const ATSAnalysisPage: React.FC = () => {
     </DashboardLayout>
   );
 };
-

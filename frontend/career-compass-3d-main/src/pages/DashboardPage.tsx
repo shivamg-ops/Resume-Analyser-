@@ -37,33 +37,33 @@ export const DashboardPage: React.FC = () => {
       title="Executive Dashboard"
       subtitle="Overview of your resume performance, skill footprint, and job alignment."
     >
-      {/* Welcome Banner */}
-      <div className="saas-card p-6 md:p-8 mb-8 bg-gradient-to-r from-[#0F1D24] via-[#0F1D24] to-[#0D9488]/20 border-[#1E3A47] shadow-[0_0_30px_rgba(0,242,254,0.06)]">
+      {/* Welcome Banner (White with Soft Purple Accent) */}
+      <div className="saas-card p-6 md:p-8 mb-8 bg-gradient-to-r from-white via-white to-[#F4F3FF] border-[#E2E8F0]">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00F2FE]/10 text-[#00F2FE] border border-[#00F2FE]/30 text-xs font-semibold mb-3 shadow-[0_0_10px_rgba(0,242,254,0.15)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#635BDB]/10 text-[#635BDB] border border-[#635BDB]/20 text-xs font-semibold mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>AI Engine Active</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#F8FAFC] font-display">
-              Welcome back, <span className="text-gradient">Candidate</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F172A] font-display">
+              Welcome back, <span className="text-[#635BDB]">Candidate</span>
             </h2>
-            <p className="text-sm text-[#94A3B8] max-w-xl mt-1 leading-relaxed">
-              Your resume profile is currently indexed against <strong className="text-[#F8FAFC]">industry benchmark roles</strong>. Upload an updated version anytime to recalculate ATS match rates.
+            <p className="text-sm text-[#64748B] max-w-xl mt-1 leading-relaxed">
+              Your resume profile is currently indexed against <strong className="text-[#0F172A]">industry benchmark roles</strong>. Upload an updated version anytime to recalculate ATS match rates.
             </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={() => navigate("/upload")}
-              className="glow-cyan-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-xs text-[#070D12]"
+              className="glow-cyan-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-xs"
             >
               <UploadCloud className="w-4 h-4" />
               <span>Analyse Resume</span>
             </button>
             <Link
               to="/ats-analysis"
-              className="px-5 py-3 rounded-xl border border-[#1E3A47] bg-[#0F1D24] hover:bg-[#152B35] hover:border-[#00F2FE]/40 text-xs font-semibold text-[#F8FAFC] transition-all"
+              className="px-5 py-3 rounded-xl border border-[#E2E8F0] bg-white hover:bg-[#F8FAFC] text-xs font-semibold text-[#0F172A] transition-all shadow-sm"
             >
               Full Report
             </Link>
@@ -78,166 +78,147 @@ export const DashboardPage: React.FC = () => {
           value={totalAnalyses}
           subtitle="All historical versions"
           icon={FileText}
-          accentColor="cyan"
-          trend={{ value: "+2 this week", positive: true }}
+          accentColor="purple"
         />
         <StatCard
           title="Average ATS Score"
           value={`${avgAts}%`}
-          subtitle="Target role baseline"
+          subtitle="Across all target roles"
           icon={Target}
           accentColor="teal"
-          trend={{ value: "+8% gain", positive: true }}
+          trend={{ value: "+4.2%", positive: true }}
         />
         <StatCard
           title="Skills Extracted"
           value={totalSkillsExtracted}
-          subtitle="NLP recognized keywords"
+          subtitle="Identified proficiencies"
           icon={Brain}
           accentColor="purple"
         />
         <StatCard
           title="Recommended Jobs"
           value={recommendedJobsCount}
-          subtitle="High compatibility roles"
+          subtitle="High compatibility matches"
           icon={Briefcase}
-          accentColor="emerald"
+          accentColor="teal"
         />
       </div>
 
-      {/* Active Resume ATS Preview */}
-      <div className="mb-8">
+      {/* ATS Score & Skills Snapshot */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <div className="lg:col-span-2 space-y-6">
+          <ATSScoreCard
+            score={bestJob?.ats_score ?? avgAts}
+            role={bestJob?.job || targetRole}
+            size="lg"
+          />
+
+          {/* Quick Extracted Skills Card */}
+          <div className="saas-card p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Brain className="w-5 h-5 text-[#635BDB]" />
+                <h3 className="font-bold text-base text-[#0F172A]">
+                  Extracted Skills from Resume
+                </h3>
+              </div>
+              <Link
+                to="/skill-gap"
+                className="text-xs font-semibold text-[#635BDB] hover:underline inline-flex items-center gap-1"
+              >
+                <span>Full Skill Gap</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {currentAnalysis?.extracted_skills && currentAnalysis.extracted_skills.length > 0 ? (
+                currentAnalysis.extracted_skills.map((skill, idx) => (
+                  <SkillBadge key={idx} name={skill} type="matched" />
+                ))
+              ) : (
+                <p className="text-xs text-[#64748B]">No skills extracted yet. Upload a resume to see identified competencies.</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Recent Analysis History Sidebar Card */}
+        <div className="saas-card p-6 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#635BDB]" />
+                <h3 className="font-bold text-sm text-[#0F172A]">Recent Analyses</h3>
+              </div>
+              <Link to="/history" className="text-xs font-semibold text-[#635BDB] hover:underline">
+                View All
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {analysisHistory.slice(0, 3).map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => selectHistoryItem(item)}
+                  className="p-3 rounded-xl border border-[#E2E8F0] hover:border-[#635BDB]/40 bg-[#F8FAFC] hover:bg-[#F4F3FF] cursor-pointer transition-all"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-xs font-bold text-[#0F172A] truncate block max-w-[170px]">
+                      {item.fileName}
+                    </span>
+                    <span className="text-xs font-bold text-[#18A999] bg-[#18A999]/10 px-2 py-0.5 rounded-full">
+                      {item.atsScore}%
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[11px] text-[#64748B] mt-1.5">
+                    <span>{item.targetRole}</span>
+                    <span>{item.analyzedAt}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-[#E2E8F0] mt-4">
+            <button
+              onClick={() => navigate("/upload")}
+              className="w-full py-2.5 rounded-xl border border-[#E2E8F0] bg-white hover:bg-[#F8FAFC] text-xs font-semibold text-[#0F172A] transition-colors shadow-sm"
+            >
+              Upload Another Resume
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Top Recommended Job Roles */}
+      <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-[#F1F5F9] font-display">
-            Active ATS Analysis
-          </h3>
-          <Link to="/ats-analysis" className="text-xs font-semibold text-[#22C1C3] hover:underline flex items-center gap-1">
-            <span>Explore Breakdown</span>
+          <div>
+            <h3 className="text-lg font-bold text-[#0F172A]">Top Job Compatibility Matches</h3>
+            <p className="text-xs text-[#64748B]">Ranked by semantic vector similarity and ATS keyword coverage.</p>
+          </div>
+          <Link
+            to="/jobs"
+            className="text-xs font-semibold text-[#635BDB] hover:underline inline-flex items-center gap-1"
+          >
+            <span>See All Roles</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        <ATSScoreCard
-          score={bestJob?.ats_score ?? 88}
-          role={bestJob?.job ?? targetRole}
-          size="lg"
-        />
-      </div>
-
-      {/* Two Column Grid: Top Jobs & Extracted Skills */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-        {/* Top 2 Job Matches */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-[#F1F5F9] font-display">
-              Top Recommended Positions
-            </h3>
-            <Link to="/jobs" className="text-xs font-semibold text-[#22C1C3] hover:underline flex items-center gap-1">
-              <span>View All ({recommendedJobsCount})</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {currentAnalysis?.job_matches?.slice(0, 2).map((job, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentAnalysis?.job_matches && currentAnalysis.job_matches.length > 0 ? (
+            currentAnalysis.job_matches.slice(0, 3).map((job, idx) => (
               <JobRecommendationCard key={idx} job={job} isTopMatch={idx === 0} />
-            ))}
-          </div>
-        </div>
-
-        {/* Skills Footprint */}
-        <div className="saas-card p-6 flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="font-bold text-[#F1F5F9] text-base">Verified Skills Footprint</h4>
-              <span className="text-xs text-[#22C1C3] font-semibold">
-                {currentAnalysis?.extracted_skills?.length || 0} Skills
-              </span>
+            ))
+          ) : (
+            <div className="col-span-full p-8 text-center saas-card">
+              <p className="text-sm text-[#64748B]">Upload a resume to discover matched careers.</p>
             </div>
-
-            <p className="text-xs text-[#94A3B8] leading-relaxed mb-4">
-              AI-extracted from your resume text and mapped to industry standard taxonomies.
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {(currentAnalysis?.extracted_skills || [
-                "python", "django", "react", "javascript", "sql", "pytorch", "deep learning", "nlp"
-              ]).map((skill, idx) => (
-                <SkillBadge key={idx} name={skill} type="matched" size="sm" />
-              ))}
-            </div>
-          </div>
-
-          <div className="pt-6 border-t border-[#263B43] mt-6">
-            <Link
-              to="/skill-gap"
-              className="text-xs font-semibold text-[#22C1C3] hover:underline flex items-center justify-between"
-            >
-              <span>Analyze Missing Skills</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Recent History Table */}
-      <div className="saas-card p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h3 className="text-lg font-bold text-[#F1F5F9] font-display">Recent Resume Analyses</h3>
-            <p className="text-xs text-[#94A3B8]">Audit trail of uploaded documents and ATS benchmark results.</p>
-          </div>
-          <Link to="/history" className="text-xs font-semibold text-[#22C1C3] hover:underline">
-            Full History
-          </Link>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-[#263B43] text-[#94A3B8]">
-                <th className="pb-3 font-semibold">Document Name</th>
-                <th className="pb-3 font-semibold">Target Position</th>
-                <th className="pb-3 font-semibold">ATS Score</th>
-                <th className="pb-3 font-semibold">Date Analyzed</th>
-                <th className="pb-3 font-semibold text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#263B43]/50 text-[#F1F5F9]">
-              {analysisHistory.slice(0, 4).map((rec) => (
-                <tr key={rec.id} className="hover:bg-[#1B2F3A]/40 transition-colors">
-                  <td className="py-3.5 font-medium flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[#22C1C3]" />
-                    <span className="truncate max-w-[200px]">{rec.fileName}</span>
-                  </td>
-                  <td className="py-3.5 text-[#94A3B8]">{rec.targetRole}</td>
-                  <td className="py-3.5">
-                    <span className="px-2.5 py-0.5 rounded-full font-semibold text-xs bg-[#22C1C3]/10 text-[#22C1C3] border border-[#22C1C3]/20">
-                      {rec.atsScore}%
-                    </span>
-                  </td>
-                  <td className="py-3.5 text-[#94A3B8] flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{rec.analyzedAt}</span>
-                  </td>
-                  <td className="py-3.5 text-right">
-                    <button
-                      onClick={() => {
-                        selectHistoryItem(rec);
-                        navigate("/ats-analysis");
-                      }}
-                      className="text-xs font-semibold text-[#22C1C3] hover:underline"
-                    >
-                      Inspect
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          )}
         </div>
       </div>
     </DashboardLayout>
   );
 };
-
