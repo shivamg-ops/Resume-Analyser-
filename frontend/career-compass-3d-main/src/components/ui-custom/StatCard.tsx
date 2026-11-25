@@ -31,14 +31,14 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     <div className="saas-card p-5 group hover:border-[#635BDB]/30 transition-all duration-200">
       <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-semibold tracking-wide text-[#64748B]">{title}</span>
+        <span className="text-xs font-bold tracking-wide text-[#475569]">{title}</span>
         <div className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-transform group-hover:scale-105 ${accentClasses}`}>
           <Icon className="w-4 h-4" />
         </div>
       </div>
 
       <div className="flex items-baseline gap-2 mb-1">
-        <span className="text-2xl font-bold tracking-tight text-[#0F172A] font-display">
+        <span className="text-2xl font-extrabold tracking-tight text-[#0F172A] font-display">
           {value}
         </span>
         {trend && (
@@ -54,7 +54,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         )}
       </div>
 
-      {subtitle && <p className="text-xs text-[#94A3B8] mt-1">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-[#64748B] font-medium mt-1">{subtitle}</p>}
     </div>
   );
 };

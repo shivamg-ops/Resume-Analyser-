@@ -73,7 +73,7 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
           <span className="text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             {normalizedScore}%
           </span>
-          <span className="text-[10px] uppercase tracking-wider font-bold text-[#64748B]">
+          <span className="text-[10px] uppercase tracking-wider font-bold text-[#475569]">
             ATS Score
           </span>
         </div>
@@ -82,7 +82,7 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
       {/* Info details */}
       <div className="flex-1 text-center md:text-left">
         <div
-          className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold mb-2.5"
+          className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-bold mb-2.5"
           style={{
             backgroundColor: `${colorHex}15`,
             color: colorHex,
@@ -96,14 +96,14 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
         <h3 className="text-xl font-bold text-[#0F172A] mb-1">
           Target Role: <span className="text-[#635BDB]">{role || "Target Role"}</span>
         </h3>
-        <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed mb-4">
+        <p className="text-xs sm:text-sm text-[#334155] leading-relaxed mb-4 font-normal">
           {tierDescription}
         </p>
 
         {/* Breakdown bars */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-3 border-t border-[#E2E8F0]">
           <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-            <span className="text-[10px] text-[#64748B] uppercase font-bold block mb-0.5">Keyword Match</span>
+            <span className="text-[10px] text-[#475569] uppercase font-bold block mb-0.5">Keyword Match</span>
             <span className="text-sm font-bold text-[#0F172A]">{Math.min(100, normalizedScore + 5)}%</span>
           </div>
           <div className="p-2.5 rounded-xl bg-[#F4F3FF] border border-[#635BDB]/20">

@@ -66,7 +66,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
       {/* Navigation Links */}
       <div className="flex-1 overflow-y-auto px-2 py-4 space-y-1">
         {!collapsed && (
-          <div className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider px-3 mb-2">
+          <div className="text-[10px] font-bold text-[#475569] uppercase tracking-wider px-3 mb-2">
             Main Menu
           </div>
         )}
@@ -80,13 +80,13 @@ export const Sidebar: React.FC<SidebarProps> = () => {
               to={item.path}
               className={`group flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-xs transition-all duration-150 ${
                 isActive
-                  ? "bg-[#635BDB] text-white shadow-sm shadow-[#635BDB]/25 font-semibold"
-                  : "text-[#64748B] hover:text-[#635BDB] hover:bg-[#F4F3FF]"
+                  ? "bg-[#635BDB] text-white shadow-sm shadow-[#635BDB]/25 font-bold"
+                  : "text-[#334155] hover:text-[#635BDB] hover:bg-[#F4F3FF]"
               }`}
             >
               <Icon
                 className={`w-4 h-4 shrink-0 ${
-                  isActive ? "text-white" : "text-[#64748B] group-hover:text-[#635BDB]"
+                  isActive ? "text-white" : "text-[#475569] group-hover:text-[#635BDB]"
                 }`}
               />
               {!collapsed && <span>{item.label}</span>}
@@ -105,7 +105,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
             <Sparkles className="w-3.5 h-3.5" />
             <span>AI Match Engine</span>
           </div>
-          <p className="text-[11px] text-[#64748B] leading-relaxed">
+          <p className="text-[11px] text-[#334155] leading-relaxed">
             Neural semantic scoring with ATS keyword calibration.
           </p>
         </div>
@@ -118,8 +118,8 @@ export const Sidebar: React.FC<SidebarProps> = () => {
         </div>
         {!collapsed && (
           <div className="flex flex-col min-w-0">
-            <span className="text-xs font-semibold text-[#0F172A] truncate">Shivam Anand</span>
-            <span className="text-[10px] text-[#64748B] truncate">shivam@example.com</span>
+            <span className="text-xs font-bold text-[#0F172A] truncate">Shivam Anand</span>
+            <span className="text-[10px] text-[#475569] truncate">shivam@example.com</span>
           </div>
         )}
       </div>

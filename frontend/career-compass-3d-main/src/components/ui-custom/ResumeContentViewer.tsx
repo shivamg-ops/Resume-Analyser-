@@ -123,7 +123,7 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
       <div className="p-5 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-white border-b border-[#E2E8F0]">
         {/* Candidate Name */}
         <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-[#64748B] block mb-1">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#475569] block mb-1">
             Candidate Name
           </span>
           <div className="flex items-center gap-2 text-sm font-bold text-[#0F172A]">
@@ -134,29 +134,29 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
 
         {/* Email */}
         <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-[#64748B] block mb-1">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#475569] block mb-1">
             Email Address
           </span>
           <div className="flex items-center gap-2 text-sm font-semibold text-[#0F172A]">
             <Mail className="w-4 h-4 text-[#18A999] shrink-0" />
-            <span className="truncate text-xs font-mono">{email || "Not detected"}</span>
+            <span className="truncate text-xs font-mono font-medium">{email || "Not detected"}</span>
           </div>
         </div>
 
         {/* Phone */}
         <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-[#64748B] block mb-1">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#475569] block mb-1">
             Phone Number
           </span>
           <div className="flex items-center gap-2 text-sm font-semibold text-[#0F172A]">
             <Phone className="w-4 h-4 text-[#F4A340] shrink-0" />
-            <span className="truncate text-xs font-mono">{phone || "Not detected"}</span>
+            <span className="truncate text-xs font-mono font-medium">{phone || "Not detected"}</span>
           </div>
         </div>
 
         {/* Links */}
         <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-[#64748B] block mb-1">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-[#475569] block mb-1">
             Profiles & Links
           </span>
           <div className="flex items-center gap-3 text-xs font-semibold">
@@ -171,7 +171,7 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
                 <span>LinkedIn</span>
               </a>
             ) : (
-              <span className="text-[#94A3B8] text-xs">No LinkedIn</span>
+              <span className="text-[#64748B] text-xs">No LinkedIn</span>
             )}
 
             {github ? (
@@ -185,7 +185,7 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
                 <span>GitHub</span>
               </a>
             ) : (
-              <span className="text-[#94A3B8] text-xs">No GitHub</span>
+              <span className="text-[#64748B] text-xs">No GitHub</span>
             )}
           </div>
         </div>
@@ -195,16 +195,16 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
       {isExpanded ? (
         <div className="p-5 md:p-6 bg-[#FAFAFC]">
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#64748B]">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#334155]">
               <FileText className="w-4 h-4 text-[#635BDB]" />
               <span>Full Extracted Text ({resumeText ? resumeText.length : 0} characters)</span>
             </div>
-            <span className="text-[11px] text-[#94A3B8]">Scrollable Stream</span>
+            <span className="text-[11px] text-[#64748B] font-medium">Scrollable Stream</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-[#E2E8F0] max-h-96 overflow-y-auto font-mono text-xs text-[#334155] leading-relaxed whitespace-pre-wrap shadow-inner">
+          <div className="p-4 rounded-xl bg-white border border-[#CBD5E1] max-h-96 overflow-y-auto font-mono text-xs text-[#1E293B] font-medium leading-relaxed whitespace-pre-wrap shadow-inner">
             {resumeText || (
-              <span className="text-[#94A3B8] italic">
+              <span className="text-[#64748B] italic">
                 Raw text is available when a live resume is uploaded through the Upload page.
               </span>
             )}
@@ -215,7 +215,7 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
           onClick={() => setIsExpanded(true)}
           className="p-3 text-center bg-[#FAFAFC] hover:bg-[#F1F5F9] cursor-pointer border-t border-[#E2E8F0] transition-colors"
         >
-          <span className="text-xs text-[#635BDB] font-semibold flex items-center justify-center gap-1.5">
+          <span className="text-xs text-[#635BDB] font-bold flex items-center justify-center gap-1.5">
             View full extracted resume text
             <ChevronDown className="w-3.5 h-3.5" />
           </span>

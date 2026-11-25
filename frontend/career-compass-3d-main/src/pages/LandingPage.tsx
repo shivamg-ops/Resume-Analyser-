@@ -69,7 +69,7 @@ export const LandingPage: React.FC = () => {
           Land Your <span className="text-[#635BDB]">Dream Job</span> With Confidence
         </h1>
 
-        <p className="text-base sm:text-lg text-[#64748B] max-w-2xl mx-auto leading-relaxed mb-10">
+        <p className="text-base sm:text-lg text-[#334155] font-medium max-w-2xl mx-auto leading-relaxed mb-10">
           Get honest, recruiter-grade feedback on your resume in seconds. Discover what ATS algorithms love, which high-impact keywords you're missing, and which tech roles fit you best.
         </p>
 
@@ -82,7 +82,7 @@ export const LandingPage: React.FC = () => {
           <h3 className="text-lg font-bold text-[#0F172A] mb-1">
             Drop Your Resume Here for Instant Feedback
           </h3>
-          <p className="text-xs text-[#64748B] mb-6">
+          <p className="text-xs text-[#475569] font-medium mb-6">
             Supports PDF, DOCX, TXT. Fast, private, and calibrated against real tech recruiters.
           </p>
 
@@ -106,7 +106,7 @@ export const LandingPage: React.FC = () => {
               <FileCheck2 className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-[#0F172A] text-base mb-2">Recruiter-Grade ATS Scoring</h4>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-xs text-[#475569] leading-relaxed font-medium">
               Find out how Applicant Tracking Systems parse your experience and keyword density.
             </p>
           </div>
@@ -116,7 +116,7 @@ export const LandingPage: React.FC = () => {
               <TrendingUp className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-[#0F172A] text-base mb-2">Skill Gap Roadmap</h4>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-xs text-[#475569] leading-relaxed font-medium">
               Identify exactly which frameworks or tools are missing between your resume and your target title.
             </p>
           </div>
@@ -126,7 +126,7 @@ export const LandingPage: React.FC = () => {
               <Brain className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-[#0F172A] text-base mb-2">Semantic AI Career Match</h4>
-            <p className="text-xs text-[#64748B] leading-relaxed">
+            <p className="text-xs text-[#475569] leading-relaxed font-medium">
               Matches your skills to high-demand engineering roles using advanced vector similarity.
             </p>
           </div>
