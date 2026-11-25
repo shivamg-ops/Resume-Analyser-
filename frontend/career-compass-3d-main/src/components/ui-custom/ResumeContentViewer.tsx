@@ -224,3 +224,4 @@ export const ResumeContentViewer: React.FC<ResumeContentViewerProps> = ({
     </div>
   );
 };
+
