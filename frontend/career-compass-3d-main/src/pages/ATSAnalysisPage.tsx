@@ -211,3 +211,4 @@ export const ATSAnalysisPage: React.FC = () => {
     </DashboardLayout>
   );
 };
+

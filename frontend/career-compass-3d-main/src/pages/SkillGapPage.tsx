@@ -205,3 +205,4 @@ export const SkillGapPage: React.FC = () => {
     </DashboardLayout>
   );
 };
+

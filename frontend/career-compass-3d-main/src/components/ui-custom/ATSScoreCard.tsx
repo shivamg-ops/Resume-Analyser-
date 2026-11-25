@@ -115,3 +115,4 @@ export const ATSScoreCard: React.FC<ATSScoreCardProps> = ({
     </div>
   );
 };
+

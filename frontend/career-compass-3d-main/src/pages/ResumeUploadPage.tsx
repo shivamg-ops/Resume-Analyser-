@@ -219,3 +219,4 @@ export const ResumeUploadPage: React.FC = () => {
     </DashboardLayout>
   );
 };
+

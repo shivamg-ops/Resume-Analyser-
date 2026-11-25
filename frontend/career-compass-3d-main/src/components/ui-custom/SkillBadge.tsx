@@ -38,3 +38,4 @@ export const SkillBadge: React.FC<SkillBadgeProps> = ({
     </span>
   );
 };
+
