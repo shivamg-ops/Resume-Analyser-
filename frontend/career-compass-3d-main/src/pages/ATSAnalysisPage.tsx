@@ -16,6 +16,7 @@ import { ATSScoreCard } from "@/components/ui-custom/ATSScoreCard";
 import { SkillBadge } from "@/components/ui-custom/SkillBadge";
 import { EmptyState } from "@/components/ui-custom/EmptyState";
 import { ResumeAdvisorPanel } from "@/components/ui-custom/ResumeAdvisorPanel";
+import { ResumeContentViewer } from "@/components/ui-custom/ResumeContentViewer";
 import { useAnalysis } from "@/context/AnalysisContext";
 
 export const ATSAnalysisPage: React.FC = () => {
@@ -53,6 +54,13 @@ export const ATSAnalysisPage: React.FC = () => {
           score={atsScore}
           role={bestJob?.job || targetRole}
           size="lg"
+        />
+
+        {/* Resume Contact & Extracted Text Viewer */}
+        <ResumeContentViewer
+          resumeText={currentAnalysis.resume_text}
+          contactInfo={currentAnalysis.contact_info}
+          fileName={currentFileName}
         />
 
         {/* 3 Metric Cards */}

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import type { ResultData, JobMatch } from "@/types/result";
+import type { ResultData, JobMatch, ContactInfo } from "@/types/result";
 
 export interface AnalysisRecord {
   id: string;
@@ -9,6 +9,8 @@ export interface AnalysisRecord {
   atsScore: number;
   extractedSkills: string[];
   jobMatches: JobMatch[];
+  resumeText?: string;
+  contactInfo?: ContactInfo;
   analyzedAt: string;
 }
 
@@ -118,6 +120,8 @@ export const AnalysisProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         atsScore: bestScore,
         extractedSkills: data.extracted_skills || [],
         jobMatches: data.job_matches || [],
+        resumeText: data.resume_text,
+        contactInfo: data.contact_info,
         analyzedAt: "Just now"
       };
 
@@ -134,7 +138,9 @@ export const AnalysisProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const selectHistoryItem = (record: AnalysisRecord) => {
     setCurrentAnalysis({
       extracted_skills: record.extractedSkills,
-      job_matches: record.jobMatches
+      job_matches: record.jobMatches,
+      resume_text: record.resumeText,
+      contact_info: record.contactInfo
     });
     setCurrentFileName(record.fileName);
     setTargetRole(record.targetRole);

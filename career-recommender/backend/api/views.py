@@ -4,7 +4,7 @@ from rest_framework import status
 from django.conf import settings
 import os
 
-from parsers.parser import parse_resume
+from parsers.parser import parse_resume, extract_contact_info
 from models.ats_scorer import extract_skills
 from utils.matcher import match_job
 
@@ -32,6 +32,7 @@ class AnalyzeResumeView(APIView):
 
         # Parse resume
         resume_text = parse_resume(resume_path)
+        contact_info = extract_contact_info(resume_text)
 
         SKILL_LIST = [
             "python", "django", "flask", "react", "javascript",
@@ -47,5 +48,7 @@ class AnalyzeResumeView(APIView):
 
         return Response({
             "extracted_skills": extracted_skills,
-            "job_matches": job_matches
+            "job_matches": job_matches,
+            "resume_text": resume_text,
+            "contact_info": contact_info
         })
