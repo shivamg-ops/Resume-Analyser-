@@ -127,3 +127,4 @@ export const getPowerWordsForRole = (role: string): PowerWordRecommendation => {
     ]
   };
 };
+
