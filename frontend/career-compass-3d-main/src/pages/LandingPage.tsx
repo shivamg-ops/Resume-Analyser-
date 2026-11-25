@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Sparkles,
   ArrowRight,
@@ -15,6 +15,7 @@ import {
 import { useAnalysis } from "@/context/AnalysisContext";
 
 export const LandingPage: React.FC = () => {
+  const navigate = useNavigate();
   const { analyzeResume, isAnalyzing } = useAnalysis();
 
   const handleQuickUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,7 @@ export const LandingPage: React.FC = () => {
 
     try {
       await analyzeResume(file);
-      window.location.href = "/ats-analysis";
+      navigate("/ats-analysis");
     } catch (err: any) {
       alert(`Upload failed: ${err.message || "Backend error"}`);
     }
